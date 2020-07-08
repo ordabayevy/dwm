@@ -8,6 +8,7 @@ static const unsigned int gappiv    = 10;       /* vert inner gap between window
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=14" };
@@ -32,11 +33,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating    isfakefullscreen  monitor    scratch key */
-	{ "Gimp",     NULL,       NULL,       0,            1,            0,                -1,        0  },
-	{ "firefox",  NULL,       NULL,       1 << 8,       0,            1,                -1,        0  },
-	{ "Google-chrome",  NULL,       NULL,       0,       0,            1,                -1,        0  },
-	{ NULL,       NULL,   "scratchpad",   0,            1,            0,                -1,       's' },
+	/* class            instance    title       tags mask     isfloating  isterminal  noswallow    isfakefullscreen  monitor    scratch key */
+	{ "Gimp",           NULL,       NULL,       0,            1,          0,           0,          0,                -1,        0  },
+	{ "Firefox",        NULL,       NULL,       1 << 8,       0,          0,          -1,          1,                -1,        0  },
+	{ "St",             NULL,       NULL,       0,            0,          1,           0,          1,                -1,        0  },
+	{ "Google-chrome",  NULL,       NULL,       0,            0,          0,           0,          1,                -1,        0  },
+	{ NULL,             NULL,   "scratchpad",   0,            1,          0,           0,          0,                -1,       's' },
 };
 
 /* layout(s) */
