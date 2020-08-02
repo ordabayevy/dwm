@@ -25,7 +25,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "3", "4", "", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "3", "4", "", "", "7", "8", "9" };
 static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
@@ -33,14 +33,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class            instance    title       tags mask     isfloating    isfakefullscreen  isterminal  noswallow  monitor    scratch key */
-	{ "Gimp",           NULL,       NULL,       0,            1,            0,                0,           0,        -1,        0  },
-	{ "Firefox",        NULL,       NULL,       1 << 8,       0,            1,                0,          -1,        -1,        0  },
-	{ "st-256color",    NULL,       NULL,       0,            0,            0,                1,           0,        -1,        0  },
-	{ "Google-chrome",  NULL,       NULL,       1 << 1,       0,            0,                0,           0,        -1,        0  },
-    { NULL,             NULL,   "Event Tester", 0,            0,            0,                0,           1,        -1,        0  }, /* xev */
-	{ "zoom",           NULL,       NULL,       0,            1,            0,                0,           0,        -1,        0  },
-	{ NULL,             NULL,   "scratchpad",   0,            1,            0,                0,           0,        -1,       's' },
+	/* class            instance    title       tags mask     switchtotag   isfloating    isfakefullscreen  isterminal  noswallow  monitor    scratch key */
+	{ "st-256color",    NULL,       NULL,       0,            0,            0,            0,                1,           0,        -1,        0  },
+	{ "Google-chrome",  NULL,       NULL,       1 << 1,       1,            0,            0,                0,           0,        -1,        0  },
+    { NULL,             NULL,   "Event Tester", 0,            0,            0,            0,                0,           1,        -1,        0  }, /* xev */
+	{ "zoom",           NULL,       NULL,       1 << 5,       1,            1,            0,                0,           0,        -1,        0  },
+	{ NULL,             NULL,   "scratchpad",   0,            0,            1,            0,                0,           0,        -1,       's' },
 };
 
 /* layout(s) */
