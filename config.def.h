@@ -49,7 +49,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1:", "2:", "3", "4", "5:", "6:", "7", "8", "9" };
+static const char *tags[] = { "1:", "2:", "3:", "4:", "5:", "6:", "7", "8", "9:" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -59,9 +59,15 @@ static const Rule rules[] = {
 	/* class            instance    title       tags mask     switchtotag   isfloating    isfakefullscreen  isterminal  noswallow  monitor    scratch key */
 	{ "st-256color",    NULL,       NULL,       0,            0,            0,            0,                1,           0,        -1,        0  },
 	{ "Google-chrome",  NULL,       NULL,       1 << 1,       1,            0,            0,                0,           0,        -1,        0  },
+	{ "org.remmina",    NULL,       NULL,       1 << 2,       1,            0,            0,                0,           0,        -1,        0  },
+	{ "File",           NULL,       "lf",       1 << 3,       1,            0,            0,                0,           0,        -1,        0  },
+	{ "Slack",        "slack",      NULL,       1 << 4,       1,            0,            0,                0,           0,        -1,        0  },
+	{ "zoom",           NULL,       NULL,       1 << 5,       1,            1,            0,                0,           0,         0,        0  },
     { NULL,             NULL,   "Event Tester", 0,            0,            0,            0,                0,           1,        -1,        0  }, /* xev */
-	{ "zoom",           NULL,       NULL,       1 << 5,       1,            1,            0,                0,           0,        -1,        0  },
 	{ NULL,             NULL,   "scratchpad",   0,            0,            1,            0,                0,           0,        -1,       's' },
+	{ NULL,             NULL,   "pulsemixer",   0,            0,            1,            0,                0,           0,        -1,       'v' },
+	{ "youtubemusic",   NULL,       NULL,       0,            0,            1,            0,                0,           0,        -1,       'm' },
+	{ NULL,             NULL,       "CoSMoS",   0,            0,            1,            0,                0,           0,        -1,        0  },
 };
 
 /* layout(s) */
@@ -92,16 +98,26 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *web[]  = { "google-chrome-stable", NULL };
+static const char *remote[]  = { "remmina", NULL };
+static const char *file[]  = { "st", "-c", "File", "-e", "lf", NULL };
+static const char *slack[]  = { "slack", NULL };
 
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", NULL}; 
+static const char *volume[] = {"v", "st", "-e", "pulsemixer", NULL}; 
+static const char *music[]  = { "m", "youtubemusic-nativefier", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = web } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = remote } },
+	{ MODKEY,                       XK_x,      spawn,          {.v = file } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = slack } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_n,      togglescratch,  {.v = music } },
+	{ MODKEY,                       XK_o,      togglescratch,  {.v = volume } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
