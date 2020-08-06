@@ -56,18 +56,18 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class            instance    title       tags mask     switchtotag   isfloating    isfakefullscreen  isterminal  noswallow  monitor    scratch key */
-	{ "st-256color",    NULL,       NULL,       0,            0,            0,            0,                1,           0,        -1,        0  },
-	{ "Google-chrome",  NULL,       NULL,       1 << 1,       1,            0,            0,                0,           0,        -1,        0  },
-	{ "org.remmina",    NULL,       NULL,       1 << 2,       1,            0,            0,                0,           0,        -1,        0  },
-	{ "File",           NULL,       "lf",       1 << 3,       1,            0,            0,                0,           0,        -1,        0  },
-	{ "Slack",        "slack",      NULL,       1 << 4,       1,            0,            0,                0,           0,        -1,        0  },
-	{ "zoom",           NULL,       NULL,       1 << 5,       1,            1,            0,                0,           0,         0,        0  },
-    { NULL,             NULL,   "Event Tester", 0,            0,            0,            0,                0,           1,        -1,        0  }, /* xev */
-	{ NULL,             NULL,   "scratchpad",   0,            0,            1,            0,                0,           0,        -1,       's' },
-	{ NULL,             NULL,   "pulsemixer",   0,            0,            1,            0,                0,           0,        -1,       'v' },
-	{ "youtubemusic",   NULL,       NULL,       0,            0,            1,            0,                0,           0,        -1,       'm' },
-	{ NULL,             NULL,       "CoSMoS",   0,            0,            1,            0,                0,           0,        -1,        0  },
+	/* class            instance    title       tags mask     switchtotag   isfloating    isterminal  noswallow  monitor    scratch key */
+	{ "st-256color",    NULL,       NULL,       0,            0,            0,            1,           0,        -1,        0  },
+	{ "Google-chrome",  NULL,       NULL,       1 << 1,       1,            0,            0,           0,        -1,        0  },
+	{ "org.remmina",    NULL,       NULL,       1 << 2,       1,            0,            0,           0,        -1,        0  },
+	{ "File",           NULL,       "lf",       1 << 3,       1,            0,            0,           0,        -1,        0  },
+	{ "Slack",        "slack",      NULL,       1 << 4,       1,            0,            0,           0,        -1,        0  },
+	{ "zoom",           NULL,       NULL,       1 << 5,       1,            1,            0,           0,         0,        0  },
+    { NULL,             NULL,   "Event Tester", 0,            0,            0,            0,           1,        -1,        0  }, /* xev */
+	{ NULL,             NULL,   "scratchpad",   0,            0,            1,            0,           0,        -1,       's' },
+	{ NULL,             NULL,   "pulsemixer",   0,            0,            1,            0,           0,        -1,       'v' },
+	{ "youtubemusic",   NULL,       NULL,       0,            0,            1,            0,           0,        -1,       'm' },
+	{ NULL,             NULL,       "CoSMoS",   0,            0,            1,            0,           0,        -1,        0  },
 };
 
 /* layout(s) */
