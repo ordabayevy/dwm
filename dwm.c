@@ -898,7 +898,7 @@ drawbar(Monitor *m)
 	Client *c;
 
 	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon) { /* status is only drawn on selected monitor */
+	if (m == selmon || 1) { /* status is only drawn on selected monitor */
                 char *ts = stextc;
                 char *tp = stextc;
                 char ctmp;
@@ -2543,6 +2543,7 @@ updatestatus(void)
 {
 	char rawstext[256];
 
+	Monitor* m;
 	if (gettextprop(root, XA_WM_NAME, rawstext, sizeof rawstext)) {
                 char stextt[256];
                 char *stc = stextc, *sts = stexts, *stt = stextt;
@@ -2561,7 +2562,8 @@ updatestatus(void)
                 strcpy(stexts, stextc);
                 wstext = TEXTW(stextc);
         }
-        drawbar(selmon);
+	for(m = mons; m; m = m->next)
+		drawbar(m);
 }
 
 void
