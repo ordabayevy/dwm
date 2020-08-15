@@ -48,6 +48,12 @@ static const char *colors[][3]      = {
 	[SchemeCol12] = { col12,     col_gray1, col_gray2 },
 };
 
+static const char *const autostart[] = {
+    "xwallpaper", "--zoom", "/home/ordabayev/.config/xwallpaper/wallpaper.jpg", NULL,
+    "dwmblocks", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "1:", "2:", "3:", "4:", "5:", "6:", "7", "8", "9:" };
 
